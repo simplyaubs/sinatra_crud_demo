@@ -37,4 +37,9 @@ class Application < Sinatra::Application
     redirect "/cats/#{cat_id}"
   end
 
+  delete '/cats/:id' do
+    cat_id = params[:id]
+    DB[:cats].where(id: cat_id).delete
+    redirect '/'
+  end
 end
